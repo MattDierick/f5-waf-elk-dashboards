@@ -120,7 +120,7 @@ Import dashboard
         --header 'Content-Type: text/plain' -d @- \
         | jq
         
-     jq -s . kibana/cryoptonice-dashboard.ndjson | jq '{"objects": . }' | \
+     jq -s . kibana/cryptonice-dashboard.ndjson | jq '{"objects": . }' | \
         curl -k --location --request POST "$KIBANA_URL/api/kibana/dashboards/import" \
         --header 'kbn-xsrf: true' \
         --header 'Content-Type: text/plain' -d @- \
