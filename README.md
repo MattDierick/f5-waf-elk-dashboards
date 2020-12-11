@@ -105,7 +105,26 @@ Services:
 Import dashboard
 
      - Management > Saved Objects > Import *.ndjson
+     - Or via API call
+     
+     KIBANA_URL=http://10.1.1.8:5601
+     jq -s . kibana/overview-dashboard.ndjson | jq '{"objects": . }' | \
+        curl -k --location --request POST "$KIBANA_URL/api/kibana/dashboards/import" \
+        --header 'kbn-xsrf: true' \
+        --header 'Content-Type: text/plain' -d @- \
+        | jq
 
+     jq -s . kibana/false-positives-dashboard.ndjson | jq '{"objects": . }' | \
+        curl -k --location --request POST "$KIBANA_URL/api/kibana/dashboards/import" \
+        --header 'kbn-xsrf: true' \
+        --header 'Content-Type: text/plain' -d @- \
+        | jq
+        
+     jq -s . kibana/cryoptonice-dashboard.ndjson | jq '{"objects": . }' | \
+        curl -k --location --request POST "$KIBANA_URL/api/kibana/dashboards/import" \
+        --header 'kbn-xsrf: true' \
+        --header 'Content-Type: text/plain' -d @- \
+        | jq
  
 
 source:
