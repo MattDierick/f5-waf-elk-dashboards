@@ -3,6 +3,7 @@ services:
   elasticsearch:
     image: sebp/elk:761
     restart: always
+    container_name: elk
     volumes:
       - ./logstash/conf.d:/etc/logstash/conf.d:ro
       - elk:/var/lib/elasticsearch
