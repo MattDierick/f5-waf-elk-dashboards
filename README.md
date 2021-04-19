@@ -108,7 +108,7 @@ Import dashboard
      - Or via API call
      
      KIBANA_URL=http://10.1.1.8:5601
-     jq -s . kibana/overview-dashboard.ndjson | jq '{"objects": . }' | \
+     jq -s . kibana/overview-dashboard-bot.ndjson | jq '{"objects": . }' | \
         curl -k --location --request POST "$KIBANA_URL/api/kibana/dashboards/import" \
         --header 'kbn-xsrf: true' \
         --header 'Content-Type: text/plain' -d @- \
